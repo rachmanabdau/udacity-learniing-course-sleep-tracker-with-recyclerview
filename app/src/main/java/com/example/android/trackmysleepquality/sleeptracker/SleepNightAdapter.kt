@@ -35,11 +35,7 @@ class SleepNightAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.list_item_sleep_night, parent, false)
-                as View
-
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun getItemCount()= data.size
@@ -68,5 +64,15 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             5 -> R.drawable.ic_sleep_5
             else -> R.drawable.ic_sleep_active
         })
+    }
+
+    companion object {
+        fun from(parent: ViewGroup): ViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val view = layoutInflater.inflate(R.layout.list_item_sleep_night, parent, false)
+                    as View
+
+            return ViewHolder(view)
+        }
     }
 }
